@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Planning - ID Deactivation Board</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Staff Planning - ID Deactivation Board</h1>
+            <p class="subtitle">Track ID deactivation status for transitioning staff members</p>
+        </header>
+
+        <div class="filters">
+            <div class="filter-group">
+                <label>Search Name</label>
+                <input type="text" id="searchName" placeholder="Search by name...">
+            </div>
+            <div class="filter-group">
+                <label>Fleet</label>
+                <select id="filterFleet">
+                    <option value="">All Fleets</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Vendor</label>
+                <select id="filterVendor">
+                    <option value="">All Vendors</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Transition Status</label>
+                <select id="filterTransition">
+                    <option value="">All</option>
+                    <option value="x">X (Ending)</option>
+                    <option value="Transition">Transition</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>ID Deactivation</label>
+                <select id="filterStatus">
+                    <option value="">All Statuses</option>
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+            </div>
+            <button class="export-btn" onclick="exportToCSV()">Export to CSV</button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card total">
+                <div class="stat-label">Total Staff (X)</div>
+                <div class="stat-value" id="totalCount">0</div>
+            </div>
+            <div class="stat-card pending">
+                <div class="stat-label">Pending</div>
+                <div class="stat-value" id="pendingCount">0</div>
+            </div>
+            <div class="stat-card in-progress">
+                <div class="stat-label">In Progress</div>
+                <div class="stat-value" id="inProgressCount">0</div>
+            </div>
+            <div class="stat-card completed">
+                <div class="stat-label">Completed</div>
+                <div class="stat-value" id="completedCount">0</div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Fleet</th>
+                        <th>Application</th>
+                        <th>Role</th>
+                        <th>Vendor</th>
+                        <th>Rank</th>
+                        <th>Transition</th>
+                        <th>End Date</th>
+                        <th>Manager</th>
+                        <th>ID Deactivation Status</th>
+                        <th>Submitted By</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+            <div id="noResults" class="no-results" style="display: none;">
+                No staff members found matching the filters.
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
